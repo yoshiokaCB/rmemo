@@ -11,10 +11,7 @@ RSpec.describe "memos/new", type: :view do
   end
 
   it "renders new memo form" do
-    @memo = Memo.new
-    binding.pry
-    # render template: 'memos/new'
-    # render :nothing => true
+    assigns[:params][:action] = 'new'
     render
     assert_select "form[action=?][method=?]", memos_path, "post" do
       assert_select "input#memo_title[name=?]", "memo[title]"
