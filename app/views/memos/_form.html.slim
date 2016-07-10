@@ -1,26 +1,33 @@
 = form_for @memo, html: { class: "form form-horizontal memo" } do |f|
-  .form-group
-    = f.label :title, :class => 'control-label col-lg-2'
-    .col-lg-10
-      = f.text_field :title, :class => 'form-control'
-    = f.error_span(:title)
-  .form-group
-    = f.label :status, :class => 'control-label col-lg-2'
-    .col-lg-10
-      = f.text_field :status, :class => 'form-control'
-    = f.error_span(:status)
-  .form-group
-    = f.label :content_body, :class => 'control-label col-lg-2'
-    .col-lg-10
-      = f.text_field :content_body, :class => 'form-control'
-    = f.error_span(:content_body)
-  .form-group
-    = f.label :user_id, :class => 'control-label col-lg-2'
-    .col-lg-10
-      = f.text_field :user_id, :class => 'form-control'
-    = f.error_span(:user_id)
-  .form-group
-    .col-lg-offset-2.col-lg-10
-      = f.submit nil, :class => 'btn btn-primary'
-      '
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), memos_path, :class => 'btn'
+  .content_wrp
+    .form-group
+      .col-lg-12 = f.label(:title, :class => 'label label-default btn-lg')
+      .col-lg-12 = f.text_field :title, :class => 'form-control'
+      = f.error_span(:title)
+    .form-group
+      .col-lg-12 = f.label(:status, :class => 'label label-default btn-lg')
+      .col-lg-12 = f.number_field(:status, :class => 'form-control')
+      = f.error_span(:status)
+    .form-group
+      .col-lg-12 = f.label(:content_body, :class => 'label label-default btn-lg')
+      .col-lg-12 = f.text_area(:content_body, :class => 'form-control text_input_area')
+      = f.error_span(:content_body)
+    .form-group
+      /= f.label :user_id, :class => 'control-label col-lg-2'
+      .col-lg-10
+        = f.hidden_field(:user_id, :class => 'form-control')
+        = f.error_span(:user_id)
+
+
+  #action_footer
+    = f.submit nil, :class => 'btn btn-default'
+    '
+    = link_to t('.cancel',:default => t("helpers.links.cancel")),
+            memos_path,
+            :class => 'btn btn-default'
+    '
+    - unless params[:action] == 'new'
+      = link_to t('.show', :default => t("helpers.links.show")),
+              memo_path(@memo),
+              :class => 'btn btn-default'
+

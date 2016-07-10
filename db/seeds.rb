@@ -5,6 +5,48 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+sample_md = <<-eos
+# H1タイトル
+
+## H2タイトル
+
+1. リスト１リスト１リスト１
+2. リスト２リスト２リスト２
+
+### H3タイトル
+
+* リスト１リスト１リスト１
+* リスト２リスト２リスト２
+
+### H4タイトル
+
+```ruby:hoge.rb
+p hogehoge
+def hoge
+  p "hgoehoge"
+end
+```
+
+```html:hoge.html
+<h1>title</h1>
+<p>hoge</p>
+```
+
+```bash
+$ ls
+$ cat hoge.rb
+$ echo "aaaaaaa"
+```
+eos
+
+Memo.create(
+        title: "markdown 入力確認",
+        status: 0,
+        content_body: sample_md,
+        user_id: 0
+)
+
 10.times do |i|
   Memo.create(
       title: "test#{i}",

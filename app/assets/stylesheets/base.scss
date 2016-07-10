@@ -1,0 +1,26 @@
+#wrapper{
+  //padding: 10px;
+  .page-header{
+    margin: 0;
+    padding: 10px;
+  }
+  .content_wrp{
+    padding: 10px;
+  }
+  label{
+    &.btn-lg{
+      display: block;
+      padding: 8px 16px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.20;
+      border-radius: 6px;
+      text-align: left;
+      letter-spacing: 0.1em;
+    }
+  }
+  #action_footer{
+    border-top: 1px solid #ccc;
+    padding: 10px;
+  }
+}

@@ -7,6 +7,16 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      memo: ノート
+    attributes:
+      memo:
+        title: タイトル
+        status: 状態
+        content_body: 内容
+        user_id: 所有者
+        created_at: 作成日
+        updated_at: 更新日
   date:
     abbr_day_names:
     - 日
@@ -135,6 +145,11 @@ ja:
       header:
         one: "%{model}にエラーが発生しました"
         other: "%{model}に%{count}個のエラーが発生しました"
+  breadcrumbs:
+    application:
+      root: "Index"
+    pages:
+      pages: "Pages"
   helpers:
     select:
       prompt: 選択してください
@@ -142,6 +157,20 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
+    actions: ""
+    links:
+      back: "戻る"
+      cancel: "キャンセル"
+      confirm: "Are you sure?"
+      destroy: "削除"
+      new: "新規登録"
+      edit: "編集"
+      show: "確認"
+    titles:
+      edit: "編集 %{model}"
+      save: "保存 %{model}"
+      new: "新規登録 %{model}"
+      delete: "削除 %{model}"
   number:
     currency:
       format:
@@ -200,3 +229,4 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
+
