@@ -57,6 +57,7 @@ RSpec.configure do |config|
 
 end
 
+=begin
 module ControllerHelpers
   def sign_in(user = double('user'))
     if user.nil?
@@ -74,3 +75,4 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.include ControllerHelpers, type: :controller
 end
+=end
