@@ -42,9 +42,9 @@ RSpec.describe MemosController, type: :controller do
   # MemosController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  # before do
-  #   sign_in
-  # end
+  before do
+    sign_in
+  end
 
   describe "GET #index" do
     it "assigns all memos as @memos" do

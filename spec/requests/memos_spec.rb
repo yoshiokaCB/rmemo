@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "Memos", type: :request do
+  # include Devise::Test::ControllerHelpers
+  # include ControllerHelpers
+  # before do
+  #   sign_in
+  # end
   # describe "GET /memos" do
   #   it "works! (now write some real specs)" do
   #     get memos_path

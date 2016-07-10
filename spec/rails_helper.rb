@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'devise'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -25,6 +26,18 @@ require 'rspec/rails'
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
+
+module ControllerHelpers
+  def sign_in(user = double('user'))
+    if user.nil?
+      allow(request.env['warden']).to receive(:authenticate!).and_throw(:warden, {:scope => :user})
+      allow(controller).to receive(:current_user).and_return(nil)
+    else
+      allow(request.env['warden']).to receive(:authenticate!).and_return(user)
+      allow(controller).to receive(:current_user).and_return(user)
+    end
+  end
+end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -55,24 +68,11 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-end
-
-=begin
-module ControllerHelpers
-  def sign_in(user = double('user'))
-    if user.nil?
-      allow(request.env['warden']).to receive(:authenticate!).and_throw(:warden, {:scope => :user})
-      allow(controller).to receive(:current_user).and_return(nil)
-    else
-      allow(request.env['warden']).to receive(:authenticate!).and_return(user)
-      allow(controller).to receive(:current_user).and_return(user)
-    end
-  end
-end
-
-RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include ControllerHelpers, type: :controller
+  # config.render_views = true
+
 end
-=end
+
+
