@@ -24,7 +24,13 @@ RSpec.describe MemosController, type: :controller do
   # Memo. As you add validations to Memo, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    # skip("Add a hash of attributes valid for your model")
+    {
+        :title => "MyString",
+        :status => 1,
+        :content_body => "MyText",
+        :user_id => 1
+    }
   }
 
   let(:invalid_attributes) {
@@ -35,6 +41,10 @@ RSpec.describe MemosController, type: :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # MemosController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+
+  before do
+    sign_in
+  end
 
   describe "GET #index" do
     it "assigns all memos as @memos" do

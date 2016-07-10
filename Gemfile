@@ -65,3 +65,6 @@ gem 'twitter-bootstrap-rails'
 gem 'qiita-markdown'
 
 gem 'devise'
+gem 'devise-bootstrap-views'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
