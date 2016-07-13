@@ -1,5 +1,14 @@
+.alert-margin-top{
+  margin-top: 20px;
+}
+.margin-right-10{
+  margin-right: 10px;
+}
 #wrapper{
   //padding: 10px;
+  .panel{
+    margin: 10%;
+  }
   .page-header{
     margin: 0;
     padding: 10px;
