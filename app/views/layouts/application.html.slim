@@ -8,13 +8,6 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    /- if notice
-    /  p.alert.alert-success = notice
-    /
-    /- if alert
-    /  p.alert.alert-danger = alert
-
-    /.col-md-10
 
     - if notice.present? || alert.present?
       .container-fluid.alert-margin-top
@@ -27,7 +20,6 @@ html
           .alert.alert-dismissable.alert-danger
             button.close data-dismiss="alert" type="button"  &times;
             p alert
-
 
     #wrapper
 
