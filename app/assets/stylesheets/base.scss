@@ -5,9 +5,36 @@
   margin-right: 10px;
 }
 #wrapper{
+  .header_logo_wrp{
+    float: left;
+  }
+  .header_logo{
+    width: 120px;
+  }
   //padding: 10px;
+  .header_nav_wrp{
+    float: right;
+    padding-top: 7px;
+    padding-right: 5px;
+  }
+  ul.header_nav{
+    list-style: none;
+    li{
+      float: left;
+      margin-right: 10px;
+    }
+    li:after{
+      padding-left: 10px;
+      content: "｜";
+    }
+    li:last-child:after{
+      content: "";
+    }
+  }
   .panel{
-    margin: 10%;
+    //margin: 10%;
+    max-width: 500px;
+    margin: 20px auto;
   }
   .page-header{
     margin: 0;

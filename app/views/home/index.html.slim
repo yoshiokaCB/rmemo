@@ -1,20 +1,22 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+div class="panel panel-default devise-bs"
+  div class="panel-heading"
+    h1 Home#index
 
-- if user_signed_in?
-  div
-    Logged in as
-    strong = current_user.email
+  div class="panel-body"
 
-  = link_to "Settings", edit_user_registration_path, :class => "navbar-link"
-  = '|'
-  = link_to "Logout", destroy_user_session_path, method: :delete, :class => "navbar-link"
+  - if user_signed_in?
+    div
+      strong = current_user.email
 
-- else
+    = link_to "Settings", edit_user_registration_path, :class => "navbar-link"
+    = '|'
+    = link_to "Logout", destroy_user_session_path, method: :delete, :class => "navbar-link"
 
-  = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
-  = '|'
-  = link_to "Login", new_user_session_path, :class => 'navbar-link'
+  - else
+
+    = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
+    = '|'
+    = link_to "Login", new_user_session_path, :class => 'navbar-link'
 
 p
   Find me in app/views/home/index.html.erb

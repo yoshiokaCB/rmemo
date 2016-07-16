@@ -20,14 +20,14 @@
 
 
   #action_footer
-    = f.submit nil, :class => 'btn btn-default'
+    = f.submit nil, :class => 'btn btn-success'
     '
     = link_to t('.cancel',:default => t("helpers.links.cancel")),
             memos_path,
-            :class => 'btn btn-default'
+            :class => 'btn btn-warning'
     '
     - unless params[:action] == 'new'
       = link_to t('.show', :default => t("helpers.links.show")),
               memo_path(@memo),
-              :class => 'btn btn-default'
+              :class => 'btn btn-primary'
 

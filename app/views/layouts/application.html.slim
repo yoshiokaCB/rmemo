@@ -15,17 +15,22 @@ html
     /  p.alert.alert-danger = alert
 
     /.col-md-10
-    .container-fluid.alert-margin-top
-      - if notice.present?
-        .alert.alert-dismissable.alert-success
-          button.close data-dismiss="alert" type="button"  &times;
-          p = notice
 
-      - if alert.present?
-        .alert.alert-dismissable.alert-danger
-          button.close data-dismiss="alert" type="button"  &times;
-          p alert
+    - if notice.present? || alert.present?
+      .container-fluid.alert-margin-top
+        - if notice.present?
+          .alert.alert-dismissable.alert-success
+            button.close data-dismiss="alert" type="button"  &times;
+            p = notice
+
+        - if alert.present?
+          .alert.alert-dismissable.alert-danger
+            button.close data-dismiss="alert" type="button"  &times;
+            p alert
 
 
     #wrapper
+
+      == render 'shared/header'
+
       == yield

@@ -1,5 +1,14 @@
 ---
 ja:
+  shared:
+    header:
+      logout: "ログアウト"
+      nav:
+        config: ユーザ設定
+        memos: メモ一覧
+  memos:
+    index:
+      title: メモ一覧
   activerecord:
     errors:
       messages:

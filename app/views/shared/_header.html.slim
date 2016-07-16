@@ -1,0 +1,8 @@
+div.clearfix
+  .header_logo_wrp
+    = image_tag("rmemo_logo.png", alt: "rmemo", class: "header_logo")
+  .header_nav_wrp
+    ul.header_nav
+      li = link_to t(".nav.memos"), memos_path
+      li = link_to t(".nav.config"), home_index_path
+      li = link_to t(".logout"), destroy_user_session_path, method: :delete
