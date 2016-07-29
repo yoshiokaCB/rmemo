@@ -15,10 +15,12 @@ class MemosController < ApplicationController
   # GET /memos/new
   def new
     @memo = Memo.new
+    # TODO: memo_categories用にオブジェクトをbuildする。
   end
 
   # GET /memos/1/edit
   def edit
+    # TODO: memo_categories用にオブジェクトを呼び出す。
   end
 
   # POST /memos
@@ -69,6 +71,13 @@ class MemosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def memo_params
-      params.require(:memo).permit(:title, :status, :content_body, :user_id)
+      params.require(:memo).permit(:title,
+                                   :status,
+                                   :content_body,
+                                   :user_id,
+                                   category_memos_attributes: [:id,
+                                                               :memo_id,
+                                                               :category_id,
+                                                               :_destroy ])
     end
 end

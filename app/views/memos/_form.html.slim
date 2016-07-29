@@ -18,6 +18,18 @@
         = f.hidden_field(:user_id, :class => 'form-control')
         = f.error_span(:user_id)
 
+    .field_for
+      - @memo.category_memos.build if @memo.category_memos.blank?
+      - @memo.category_memos.each do |memo|
+        = f.fields_for :category_memos, memo, :wrapper => false do |cmf|
+          p
+            .field_for_input
+              /= cmf.number_field :memo_id
+              = cmf.hidden_field :memo_id
+            .field_for_input
+              = cmf.number_field :category_id
+
+
 
   #action_footer
     = f.submit nil, :class => 'btn btn-success'
