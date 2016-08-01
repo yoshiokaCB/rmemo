@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+user = User.find_or_create_by(id: 1) do |user|
+  user.email = 'admin@example.com'
+  user.password = 'password'
+end
 
 sample_md = <<-eos
 # H1タイトル
@@ -40,11 +44,15 @@ $ echo "aaaaaaa"
 ```
 eos
 
+cate1 = Category.create(name: 'テストカテゴリー１', user_id: user.id)
+cate2 = Category.create(name: 'テストカテゴリー２', user_id: user.id)
+
 Memo.create(
         title: "markdown 入力確認",
         status: 0,
         content_body: sample_md,
-        user_id: 0
+        user_id: user.id,
+        category_memos_attributes: {"0" => {category_id: cate1.id}}
 )
 
 10.times do |i|
@@ -52,7 +60,8 @@ Memo.create(
       title: "test#{i}",
       status: 0,
       content_body: "テスト"*10,
-      user_id: 0
+      user_id: user.id,
+      category_memos_attributes: {"0" => {category_id: cate2.id}}
   )
 end
 

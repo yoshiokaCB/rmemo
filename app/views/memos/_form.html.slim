@@ -12,11 +12,9 @@
       .col-lg-12 = f.label(:content_body, :class => 'label label-default btn-lg')
       .col-lg-12 = f.text_area(:content_body, :class => 'form-control text_input_area')
       = f.error_span(:content_body)
-    .form-group
-      /= f.label :user_id, :class => 'control-label col-lg-2'
-      .col-lg-10
-        = f.hidden_field(:user_id, :class => 'form-control')
-        = f.error_span(:user_id)
+
+    - if @memo.user_id.blank?
+      = f.hidden_field(:user_id, value: cruent_user.id)
 
     .field_for
       - @memo.category_memos.build if @memo.category_memos.blank?
@@ -27,7 +25,7 @@
               /= cmf.number_field :memo_id
               = cmf.hidden_field :memo_id
             .field_for_input
-              = cmf.number_field :category_id
+              = cmf.number_field :category_id, :class => 'form-control'
 
 
 
