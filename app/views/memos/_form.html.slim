@@ -14,18 +14,29 @@
       = f.error_span(:content_body)
 
     - if @memo.user_id.blank?
-      = f.hidden_field(:user_id, value: cruent_user.id)
+      = f.hidden_field(:user_id, value: current_user.id)
 
     .field_for
+
+      /= f.collection_check_boxes(:category_ids, Category.all, :id, :name)
+      /= collection_check_boxes(:memo, :category_ids, Category.all, :id, :name) do |b|
+      /  = b.label { b.check_box + b.text }
+
       - @memo.category_memos.build if @memo.category_memos.blank?
       - @memo.category_memos.each do |memo|
         = f.fields_for :category_memos, memo, :wrapper => false do |cmf|
           p
             .field_for_input
-              /= cmf.number_field :memo_id
               = cmf.hidden_field :memo_id
             .field_for_input
-              = cmf.number_field :category_id, :class => 'form-control'
+              = cmf.collection_select :category_id,
+                      Category.all,
+                      :id,
+                      :name,
+                      { prompt: true },
+                      { class: 'form-control' }
+      /    = collection_check_boxes(:memo, :category_ids, Category.all, :id, :name) do |b|
+      /      = b.label { b.check_box + b.text }
 
 
 
@@ -36,8 +47,8 @@
             memos_path,
             :class => 'btn btn-warning'
     '
-    - unless params[:action] == 'new'
-      = link_to t('.show', :default => t("helpers.links.show")),
-              memo_path(@memo),
-              :class => 'btn btn-primary'
+    /- unless params[:action] == 'new'
+    /  = link_to t('.show', :default => t("helpers.links.show")),
+    /          memo_path(@memo),
+    /          :class => 'btn btn-primary'
 

@@ -29,7 +29,7 @@ class MemosController < ApplicationController
     @memo = Memo.new(memo_params)
 
     respond_to do |format|
-      if @memo.save
+      if @memo.save!
         format.html { redirect_to @memo, notice: 'Memo was successfully created.' }
         format.json { render :show, status: :created, location: @memo }
       else
@@ -75,9 +75,11 @@ class MemosController < ApplicationController
                                    :status,
                                    :content_body,
                                    :user_id,
+                                   category_ids: [],
                                    category_memos_attributes: [:id,
                                                                :memo_id,
                                                                :category_id,
-                                                               :_destroy ])
+                                                               :_destroy ],
+      )
     end
 end

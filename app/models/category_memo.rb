@@ -1,4 +1,4 @@
 class CategoryMemo < ApplicationRecord
-  has_many :categories
-  has_many :memos
+  belongs_to :category
+  belongs_to :memo
 end
