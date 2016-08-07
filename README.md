@@ -1,33 +1,50 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Overview
 
-Things you may want to cover:
+`qiita-markdown`を利用したメモアプリです。
 
-* Ruby version
+### Ruby version
 
-Ruby 2.3.1
-Ruby on Rails 5.0.0
+* Ruby 2.3.1
+* Ruby on Rails 5.0.0
 
-* Database creation
+### Install
 
 ```
-rake db:create
-rake db:migrate
+git clone
+cd rmemo
+bundle install
+```
 
+必要に応じて`config/database.yml`を修正してください。
+
+
+```
+# DB作成
+rake db:create
+# マイグレーション
+rake db:migrate
 # sample
 rake db:seed
 ```
 
-* Database initialization
+### サーバ起動
 
-* How to run the test suite
+```
+rails s
+```
+`localhost:3000`でアクセスできます。
 
+```
+id: admin@example.com
+pass: password
+```
+
+### How to run the test suite (wip)
+
+```
 bundle exec rspec
+```
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
