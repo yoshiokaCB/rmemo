@@ -1,5 +1,6 @@
 = form_for @memo, html: { class: "form form-horizontal memo" } do |f|
   .content_wrp
+
     .form-group
       .col-lg-12 = f.label(:title, :class => 'label label-default btn-lg')
       .col-lg-12 = f.text_field :title, :class => 'form-control'
@@ -9,18 +10,20 @@
       .col-lg-12 = f.number_field(:status, :class => 'form-control')
       = f.error_span(:status)
     .form-group
+      .col-lg-12 = f.label(:category_memos_attributes, :class => 'label label-default btn-lg')
+      .form_checkbox_wrapper
+        /= f.collection_check_boxes(:category_ids, Category.all, :id, :name)
+        = f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b|
+          .checkbox
+            = b.label { b.check_box + b.text }
+    .form-group
       .col-lg-12 = f.label(:content_body, :class => 'label label-default btn-lg')
       .col-lg-12 = f.text_area(:content_body, :class => 'form-control text_input_area')
       = f.error_span(:content_body)
 
+
     - if @memo.user_id.blank?
-      = f.hidden_field(:user_id, value: current_user.id)
-
-    .field_for
-
-      = f.collection_check_boxes(:category_ids, Category.all, :id, :name)
-      /= collection_check_boxes(:memo, :category_ids, Category.all, :id, :name) do |b|
-      /  = b.label { b.check_box + b.text }
+    = f.hidden_field(:user_id, value: current_user.id)
 
 
   #action_footer

@@ -2,11 +2,16 @@ require 'rails_helper'
 
 RSpec.describe "memos/new", type: :view do
   before(:each) do
+
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in FactoryGirl.create(:user)
+    user = User.first
+
     assign(:memo, Memo.new(
       :title => "MyString",
       :status => 1,
       :content_body => "MyText",
-      :user_id => 1
+      :user_id => user.id
     ))
   end
 

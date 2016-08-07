@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "categories/edit", type: :view do
   before(:each) do
+
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in FactoryGirl.create(:user)
+    user = User.first
+
     @category = assign(:category, Category.create!(
       :name => "MyString"
     ))
