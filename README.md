@@ -12,7 +12,7 @@
 ### Install
 
 ```
-git clone
+git clone https://github.com/yoshiokaCB/rmemo.git
 cd rmemo
 bundle install
 ```
