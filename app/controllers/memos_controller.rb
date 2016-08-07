@@ -76,10 +76,6 @@ class MemosController < ApplicationController
                                    :content_body,
                                    :user_id,
                                    category_ids: [],
-                                   category_memos_attributes: [:id,
-                                                               :memo_id,
-                                                               :category_id,
-                                                               :_destroy ],
       )
     end
 end

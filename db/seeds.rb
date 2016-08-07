@@ -52,7 +52,7 @@ Memo.create(
         status: 0,
         content_body: sample_md,
         user_id: user.id,
-        category_memos_attributes: {"0" => {category_id: cate1.id}}
+        category_ids: [cate1.id, cate2.id]
 )
 
 10.times do |i|
@@ -61,7 +61,7 @@ Memo.create(
       status: 0,
       content_body: "テスト"*10,
       user_id: user.id,
-      category_memos_attributes: {"0" => {category_id: cate2.id}}
+      category_ids: [cate1.id]
   )
 end
 
