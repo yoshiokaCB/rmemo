@@ -3,6 +3,10 @@
   h1 = t '.title', :default => model_class.model_name.human.pluralize.titleize
 
 .content_wrp
+  ul.submenu_list_wrp.list-inline
+    li = link_to t('.all'), memos_path
+    - Category.all.each do |cate|
+      li = link_to cate.name, category_memos_path(cate)
   table.table.table-striped
     thead
       tr

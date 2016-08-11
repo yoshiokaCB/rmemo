@@ -42,6 +42,16 @@
   }
   .content_wrp{
     padding: 10px;
+    ul.submenu_list_wrp{
+      padding: 10px;
+      li:after{
+        padding-left: 10px;
+        content: "｜";
+      }
+      li:last-child:after{
+        content: "";
+      }
+    }
   }
   label{
     &.btn-lg{

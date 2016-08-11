@@ -4,7 +4,11 @@ class MemosController < ApplicationController
   # GET /memos
   # GET /memos.json
   def index
-    @memos = Memo.all
+    @memos = if params[:category_id].present?
+               Memo.eager_load(:categories).where(categories: {id: params[:category_id]})
+             else
+               Memo.all
+             end
   end
 
   # GET /memos/1

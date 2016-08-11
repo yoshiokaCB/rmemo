@@ -9,6 +9,7 @@ ja:
         categories: カテゴリー
   memos:
     index:
+      all: 一覧
       title: メモ 一覧
   categories:
     index:

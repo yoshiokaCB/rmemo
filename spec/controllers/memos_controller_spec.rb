@@ -22,19 +22,11 @@ RSpec.describe MemosController, type: :controller do
 
   before do
     sign_in
-    # @cate1 = FactoryGirl.create(:category_sample1)
-    # @cate2 = FactoryGirl.create(:category_sample2)
+    @cate1 = FactoryGirl.create(:category_sample1)
+    @cate2 = FactoryGirl.create(:category_sample2)
     # @memo  = FactoryGirl.create(:memo)
-    # @memo  = FactoryGirl.create(:valid_new_memo)
-    p Category.all.count
-    p Memo.all.count
-    p CategoryMemo.all.count
+    @memo  = FactoryGirl.create(:valid_new_memo)
   end
-  # after do
-  #   Category.all.delete_all
-  #   Memo.all.delete_all
-  #   CategoryMemo.all.delete_all
-  # end
 
   # This should return the minimal set of attributes required to create a valid
   # Memo. As you add validations to Memo, be sure to
@@ -42,7 +34,7 @@ RSpec.describe MemosController, type: :controller do
   let(:valid_attributes) {
     # skip("Add a hash of attributes valid for your model")
     attributes = FactoryGirl.attributes_for(:memo)
-    # attributes[:category_ids] = [@cate1.id, @cate2.id]
+    attributes[:category_ids] = [@cate1.id, @cate2.id]
     attributes
     # {
     #     :title => "MyString",
@@ -64,14 +56,15 @@ RSpec.describe MemosController, type: :controller do
 
   describe "GET #index" do
     it "assigns all memos as @memos" do
-      # memo = Memo.create! valid_attributes
+      Memo.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(assigns(:memos)).to eq(Memo.all)
     end
     it "特定のカテゴリーのメモだけ表示" do
-      # memo = Memo.create! valid_attributes
+      Memo.create! valid_attributes
+      memos = Memo.eager_load(:categories).where(categories: {id: @cate1.id})
       get :index, params: {category_id: @cate1.id}, session: valid_session
-      expect(assigns(:memos)).to eq(Memo.all)
+      expect(assigns(:memos)).to eq(memos)
     end
   end
 
