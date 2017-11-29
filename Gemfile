@@ -63,6 +63,7 @@ gem 'i18n'
 gem 'slim-rails'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+gem 'font-awesome-rails'
 gem 'qiita-markdown'
 
 gem 'devise'
